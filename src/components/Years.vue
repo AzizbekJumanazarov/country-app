@@ -20,6 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import siteConstants from '../@core/constants/site-constants';
 export default defineComponent({
   name: 'YearsRange',
   emits: ['year-selected'],
@@ -30,8 +31,6 @@ export default defineComponent({
     return {
       listOfYears: [] as number[],
       currentYear: new Date().getFullYear(),
-      startYear: 2020,
-      endYear: 2030,
     };
   },
   created() {
@@ -39,7 +38,7 @@ export default defineComponent({
   },
   methods: {
     getYears() {
-      for (let year = this.startYear; year <= this.endYear; year++) {
+      for (let year = siteConstants.MIN_YEAR; year <= siteConstants.MAX_YEAR; year++) {
         this.listOfYears.push(year);
       }
     },
